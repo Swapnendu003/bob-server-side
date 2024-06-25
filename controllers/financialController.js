@@ -120,7 +120,7 @@ async function fetchBOBInterestRates() {
     - Estimated Salary: ${estimated_salary}
     - Churn: ${churn}
   
-    Based on the above customer information, provide the following recommendations:
+    Based on the above customer information, think yourself as an Expert Bank Executive provide the following recommendations:
     1. Suggested Financial Instruments:
     2. Credit Improvement Programs:
     3. Savings Plans:
@@ -131,7 +131,8 @@ async function fetchBOBInterestRates() {
     Additional Information:
     ${interestRates}
   
-    ${schemes}
+    ${schemes} 
+    Based on these create educational content and make a customised email
     `;
   
     try {
