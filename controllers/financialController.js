@@ -1,15 +1,7 @@
 require('dotenv').config();
-const { ChatOpenAI } = require('@langchain/chat_models/openai')
+const OpenAI = require("openai");
 
-const model = new ChatOpenAI({
-   openAIApiKey: process.env.OPENAI_API_KEY,
-   temperature: 0.6,
-   modelName: 'gpt-4o-mini',
-   maxTokens: 150,
-   topP: 0.95,
-   frequencyPenalty: 0,
-   presencePenalty: 0
-});
+const openAi = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 async function fetchBOBInterestRates() {
 
@@ -126,7 +118,11 @@ async function fetchBOBInterestRates() {
     `;
   
     try {
-      const modelResponse = await model.invoke(prompt);
+      const completion = await openAi.chat.completions.create({
+        model: "gpt-4o-mini",
+        messages: [{ role: "user", content: prompt }],
+      });
+      const modelResponse = completion.choices[0].message.content;
       res.json({ recommendations: modelResponse });
     } catch (error) {
       console.error('Error fetching recommendations:', error);
