@@ -1,25 +1,15 @@
 require('dotenv').config();
-const { ChatAnthropic } = require('@langchain/anthropic')
+const { ChatOpenAI } = require('@langchain/chat_models/openai')
 
-const {ChatFireworks }= require('@langchain/community/chat_models/fireworks')
-const model = new ChatFireworks({
-apiKey: process.env.FIREWORKS_API_KEY,
-model: "accounts/fireworks/models/llama-v3-70b-instruct",
-    max_tokens: 1024,
-    top_p: 1,
-    top_k: 40,
-    presence_penalty: 0,
-    frequency_penalty: 0,
-    temperature: 0.6,
+const model = new ChatOpenAI({
+   openAIApiKey: process.env.OPENAI_API_KEY,
+   temperature: 0.6,
+   modelName: 'gpt-4o-mini',
+   maxTokens: 150,
+   topP: 0.95,
+   frequencyPenalty: 0,
+   presencePenalty: 0
 });
-/*Oh Yeah*/
-/*const model = new ChatAnthropic({
-  temperature: 0.9,
-  model: "claude-3-5-sonnet-20240620",
-  apiKey: process.env.ANTHROPIC_API_KEY,
-  maxTokens: 1024,
-});*/
-
 
 async function fetchBOBInterestRates() {
 
