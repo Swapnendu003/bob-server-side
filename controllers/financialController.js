@@ -12,7 +12,7 @@ model: "accounts/fireworks/models/llama-v3-70b-instruct",
     frequency_penalty: 0,
     temperature: 0.6,
 });
-
+/*Oh Yeah*/
 /*const model = new ChatAnthropic({
   temperature: 0.9,
   model: "claude-3-5-sonnet-20240620",
